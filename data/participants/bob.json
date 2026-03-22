@@ -1,0 +1,87 @@
+{
+  "id": "bob",
+  "displayName": "Bob",
+  "picks": {
+    "first_four": {
+      "ff_1": "ff_1a",
+      "ff_2": "ff_2a",
+      "ff_3": "ff_3a",
+      "ff_4": "ff_4b"
+    },
+    "r64": {
+      "west_r64_1": "west-1",
+      "west_r64_2": "west-8",
+      "west_r64_3": "west-5",
+      "west_r64_4": "west-4",
+      "west_r64_5": "west-6",
+      "west_r64_6": "west-3",
+      "west_r64_7": "west-7",
+      "west_r64_8": "west-2",
+      "east_r64_1": "east-1",
+      "east_r64_2": "east-8",
+      "east_r64_3": "east-12",
+      "east_r64_4": "east-4",
+      "east_r64_5": "east-6",
+      "east_r64_6": "east-3",
+      "east_r64_7": "east-7",
+      "east_r64_8": "east-2",
+      "south_r64_1": "south-1",
+      "south_r64_2": "south-8",
+      "south_r64_3": "south-5",
+      "south_r64_4": "south-4",
+      "south_r64_5": "south-6",
+      "south_r64_6": "south-14",
+      "south_r64_7": "south-7",
+      "south_r64_8": "south-2",
+      "midwest_r64_1": "midwest-1",
+      "midwest_r64_2": "midwest-8",
+      "midwest_r64_3": "midwest-5",
+      "midwest_r64_4": "midwest-4",
+      "midwest_r64_5": "midwest-6",
+      "midwest_r64_6": "midwest-3",
+      "midwest_r64_7": "midwest-7",
+      "midwest_r64_8": "midwest-2"
+    },
+    "r32": {
+      "west_r32_1": "west-8",
+      "west_r32_2": "west-4",
+      "west_r32_3": "west-3",
+      "west_r32_4": "west-2",
+      "east_r32_1": "east-1",
+      "east_r32_2": "east-4",
+      "east_r32_3": "east-3",
+      "east_r32_4": "east-2",
+      "south_r32_1": "south-1",
+      "south_r32_2": "south-4",
+      "south_r32_3": "south-6",
+      "south_r32_4": "south-7",
+      "midwest_r32_1": "midwest-1",
+      "midwest_r32_2": "midwest-4",
+      "midwest_r32_3": "midwest-3",
+      "midwest_r32_4": "midwest-2"
+    },
+    "s16": {
+      "west_s16_1": "west-4",
+      "west_s16_2": "west-2",
+      "east_s16_1": "east-1",
+      "east_s16_2": "east-2",
+      "south_s16_1": "south-1",
+      "south_s16_2": "south-6",
+      "midwest_s16_1": "midwest-4",
+      "midwest_s16_2": "midwest-2"
+    },
+    "e8": {
+      "west_e8_1": "west-2",
+      "east_e8_1": "east-1",
+      "south_e8_1": "south-1",
+      "midwest_e8_1": "midwest-2"
+    },
+    "f4": {
+      "f4_1": "east-1",
+      "f4_2": "south-1"
+    },
+    "ncg": {
+      "ncg": "east-1"
+    }
+  }
+}

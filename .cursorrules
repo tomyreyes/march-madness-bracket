@@ -1,0 +1,25 @@
+# March Madness Bracket — Cursor rules
+
+## React
+
+- Use **function components** only. Do not add class components.
+- Prefer explicit prop types (`type Props = { ... }`) and `import type` for type-only imports.
+
+## Styling
+
+- Use **Tailwind CSS** utility classes for layout and visuals.
+- Dynamic values (e.g. progress bar widths) may use inline `style` when Tailwind cannot express arbitrary percentages.
+
+## Next.js
+
+- App Router: default to Server Components; add `"use client"` only when using browser APIs, event handlers, or React state in that file.
+- Keep JSON data loading on the server when possible; pass **serializable** props (plain objects/arrays) into client components.
+
+## Data
+
+- Validate JSON with **Zod** in `lib/bracket-types.ts` (or adjacent modules) when changing schemas.
+- After editing `data/meta.json` participant ids, add matching `data/participants/<id>.json` files — loading is filesystem-based (no import list to update).
+
+## Icons
+
+- Use **lucide-react** for icons.

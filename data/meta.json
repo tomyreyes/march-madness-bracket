@@ -1,0 +1,30 @@
+{
+  "tournamentLabel": "Bracket (from Tomy.pdf)",
+  "participantIds": [
+    "alex-1",
+    "alex-2",
+    "alice",
+    "bob",
+    "brennan",
+    "casey",
+    "eric",
+    "haydn",
+    "herman",
+    "herman-2",
+    "jeff",
+    "jonny",
+    "levi",
+    "megan",
+    "miranda",
+    "pau",
+    "quinn",
+    "rob",
+    "sam",
+    "shayla",
+    "shu",
+    "tomy",
+    "ty",
+    "zach"
+  ],
+  "fallbackParticipantId": "tomy"
+}

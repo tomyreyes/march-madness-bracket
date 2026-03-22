@@ -1,0 +1,13 @@
+{
+  "$comment": "Ground truth for validating imported brackets. Full regional rosters and seeds live in data/teams.json (built from scripts/build-tomy-data.mjs). Official NCAA sites for this field: East — Washington, D.C.; South — Houston, TX; West — San Jose, CA; Midwest — Chicago, IL.",
+  "schemaVersion": 1,
+  "referenceParticipantId": "tomy",
+  "referenceDisplayName": "Tomy Reyes",
+  "regionsInBracketOrder": ["east", "south", "west", "midwest"],
+  "pdfColumnMap": {
+    "ncaaEast": "first column (before PDF line 'East')",
+    "ncaaSouth": "under PDF 'East'",
+    "ncaaWest": "under PDF 'South'",
+    "ncaaMidwest": "under PDF 'West'"
+  }
+}

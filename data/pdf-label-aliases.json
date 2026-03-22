@@ -1,0 +1,4 @@
+{
+  "$comment": "Normalized PDF/OCR tokens → canonical team ids (data/teams.json). Extend when new exports garble names.",
+  "maryca": "saint-marys"
+}

@@ -1,0 +1,26 @@
+{
+  "$comment": "Per-participant slug (from PDF basename) → parseBracketExtract hints when the export is ambiguous. Keys tieBreak use norm() token order: sort two team norms with localeCompare and join with |.",
+  "levi": {
+    "tieBreak": {
+      "kansas|st. john's": "kansas"
+    }
+  },
+  "pau": {
+    "tieBreak": {
+      "kansas|st. john's": "kansas"
+    }
+  },
+  "sam": {
+    "midwestAdvInsertAfterFirst": {
+      "virginia": "Wright St."
+    },
+    "tieBreak": {
+      "virginia|wright st.": "wright st."
+    }
+  },
+  "shu": {
+    "tieBreak": {
+      "virginia|wright st.": "wright st."
+    }
+  }
+}

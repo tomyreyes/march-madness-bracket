@@ -1,0 +1,3 @@
+# Local PDFs are not needed at runtime (only JSON under data/ is used).
+data/pdfs/*.pdf
+.next
