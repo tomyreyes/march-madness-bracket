@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "seasonYear": 2026,
   "apiBase": "https://ncaa-api.henrygd.me",
-  "lastSyncedAt": "2026-03-23T01:35:58.493Z",
+  "lastSyncedAt": "2026-03-23T01:41:37.609Z",
   "actuals": {
     "r64": {
       "east_r64_1": {
@@ -270,6 +270,12 @@
         "winnerTeamId": "iowa-st",
         "winnerSeo": "iowa-st",
         "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "south_r32_1": {
+        "contestId": "6534632",
+        "winnerTeamId": "iowa",
+        "winnerSeo": "iowa",
+        "updatedAt": "2026-03-23T01:41:37.608Z"
       }
     }
   },
@@ -277,7 +283,6 @@
     "skip_bp_101_contest_6534592",
     "skip_bp_102_contest_6534593",
     "skip_bp_103_contest_6534594",
-    "skip_bp_104_contest_6534595",
-    "no_winner_bp_305_contest_6534632"
+    "skip_bp_104_contest_6534595"
   ]
 }
