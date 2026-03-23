@@ -27,5 +27,8 @@ npm run dev
 ## Scripts (local only)
 
 - `npm run pdf:text` — extract text from a PDF  
-- `npm run pdf:import` — import `data/pdfs/*.pdf` → `data/participants/*.json`  
+- `npm run pdf:strikes` — list crossed-out team text per bracket column (StrikeOut annotations; for debugging)  
+- `npm run pdf:import` — import `data/pdfs/*.pdf` → `data/participants/*.json` (merges PDF strikeouts into first-round picks when present; manual `pdf-import-hints.json` still wins on conflicts)  
 - `npm run pdf:validate` — validate participant JSON against `teams.json` and the Tomy template  
+
+**Strikeouts:** After games are played, some exports add real PDF StrikeOut annotations over the losing pick. `pdf-parse` text alone cannot see that; import uses `pdfjs-dist` to find those regions and treats “exactly one team in the matchup was struck in that column” as the winner being the other team. This only helps when the PDF actually contains StrikeOut data (not hand-drawn lines or flattened images).

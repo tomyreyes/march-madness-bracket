@@ -15,7 +15,7 @@ import { fileURLToPath } from "node:url";
  * @param {string} text
  * @returns {{ picks: object, warnings: string[] }}
  */
-function norm(s) {
+export function norm(s) {
   return s
     .trim()
     .replace(/\s+/g, " ")
@@ -117,6 +117,26 @@ function buildNameToId(pairs) {
   return m;
 }
 
+/** Matchups in hints use the same canonical key as resolve: sort both norms with localeCompare, join with |. */
+function normalizeHintPairKeys(raw) {
+  if (!raw || typeof raw !== "object") return undefined;
+  const out = {};
+  for (const [k, v] of Object.entries(raw)) {
+    if (k.startsWith("$")) continue;
+    const parts = k
+      .split("|")
+      .map((p) => p.trim())
+      .filter(Boolean);
+    if (parts.length !== 2) {
+      out[k] = v;
+      continue;
+    }
+    const canon = parts.sort((a, b) => a.localeCompare(b)).join("|");
+    out[canon] = v;
+  }
+  return out;
+}
+
 function pickR64Games(pairs, nameToId) {
   return pairs.map(([ta, tb]) => {
     const ida = nameToId.get(norm(ta));
@@ -133,11 +153,13 @@ function countNormInQueue(queue, nTarget) {
 /**
  * R64 / noisy columns: winner = team name that appears more often in the full extract (losers often appear once).
  * Tie: use first index of each name in the queue (see branch using ia/ib).
- */
-/**
+ *
  * @param {{ ta: string, tb: string }[]} games
  * @param {string[]} queue
- * @param {{ tieBreak?: Record<string, string> } | null} [hints] tieBreak keys: "na|nb" sorted with localeCompare
+ * @param {{
+ *   tieBreak?: Record<string, string>,
+ *   alwaysPick?: Record<string, string>,
+ * } | null} [hints] Keys: sorted "na|nb" (localeCompare). alwaysPick wins even when counts disagree (spot-check fixes).
  */
 function resolveWinnersByFrequency(games, queue, hints = null) {
   const full = queue.map((l) => l.trim()).filter(Boolean);
@@ -146,18 +168,25 @@ function resolveWinnersByFrequency(games, queue, hints = null) {
   for (const { ta, tb } of games) {
     const na = norm(ta);
     const nb = norm(tb);
+    const tieKey = [na, nb].sort((a, b) => a.localeCompare(b)).join("|");
+    const mustN = hints?.alwaysPick?.[tieKey];
     const ca = countNormInQueue(full, na);
     const cb = countNormInQueue(full, nb);
     let picked;
     let loserN;
-    if (ca > cb) {
+    if (mustN === na) {
+      picked = ta;
+      loserN = nb;
+    } else if (mustN === nb) {
+      picked = tb;
+      loserN = na;
+    } else if (ca > cb) {
       picked = ta;
       loserN = nb;
     } else if (cb > ca) {
       picked = tb;
       loserN = na;
     } else {
-      const tieKey = [na, nb].sort((a, b) => a.localeCompare(b)).join("|");
       const forcedN = hints?.tieBreak?.[tieKey];
       if (forcedN === na) {
         picked = ta;
@@ -275,14 +304,16 @@ function roundFromPrev(prevIds, rest, nameToId, opts = {}) {
 }
 
 /**
+ * Shared layout through R64 seed matchups (used by PDF strikeout import).
+ *
  * @param {string} text
  * @param {{
  *   tieBreak?: Record<string, string>,
+ *   alwaysPick?: Record<string, string>,
  *   midwestAdvInsertAfterFirst?: Record<string, string>,
- * } | null} [hints] Optional per-PDF fixes (see data/pdf-import-hints.json).
+ * } | null} [hints]
  */
-export function parseBracketExtract(text, hints = null) {
-  const warnings = [];
+export function parseBracketLayout(text, hints = null) {
   const lines = text.split(/\r?\n/).map((l) => l.trim());
 
   const idxPdfEast = lines.indexOf("East");
@@ -351,9 +382,60 @@ export function parseBracketExtract(text, hints = null) {
   const r64W = pickR64Games(wSeed.pairs, nameToId);
   const r64M = pickR64Games(mwSeed.pairs, nameToId);
 
-  const freqHints = hints?.tieBreak ? { tieBreak: hints.tieBreak } : null;
+  return {
+    tailLines,
+    nameToId,
+    eastAdv,
+    southAdv,
+    westAdv,
+    mwAdv,
+    r64E,
+    r64S,
+    r64W,
+    r64M,
+  };
+}
 
-  const e32n = resolveWinners(r64E, eastAdv);
+/** R64 `{ ta, tb }[]` per region in PDF column order: East, South, West, Midwest. */
+export function extractR64GamesForStrikeout(text, hints = null) {
+  const { r64E, r64S, r64W, r64M } = parseBracketLayout(text, hints);
+  return [r64E, r64S, r64W, r64M];
+}
+
+/**
+ * @param {string} text
+ * @param {{
+ *   tieBreak?: Record<string, string>,
+ *   alwaysPick?: Record<string, string>,
+ *   midwestAdvInsertAfterFirst?: Record<string, string>,
+ * } | null} [hints] Optional per-PDF fixes (see data/pdf-import-hints.json).
+ */
+export function parseBracketExtract(text, hints = null) {
+  const warnings = [];
+  const {
+    tailLines,
+    nameToId,
+    eastAdv,
+    southAdv,
+    westAdv,
+    mwAdv,
+    r64E,
+    r64S,
+    r64W,
+    r64M,
+  } = parseBracketLayout(text, hints);
+
+  const freqHints =
+    hints?.tieBreak || hints?.alwaysPick
+      ? {
+          ...(hints.tieBreak ? { tieBreak: normalizeHintPairKeys(hints.tieBreak) } : {}),
+          ...(hints.alwaysPick ? { alwaysPick: normalizeHintPairKeys(hints.alwaysPick) } : {}),
+        }
+      : null;
+
+  /** East R64: use frequency like other regions — sequential first-match often picked the wrong 8/9, 6/11, 7/10 winner when PDF lists names out of order. */
+  const eL = resolveWinnersByFrequency(r64E, eastAdv, freqHints);
+  const eastClean = stripR64Losers(eastAdv, eL.loserNorms);
   const sL = resolveWinnersByFrequency(r64S, southAdv, freqHints);
   const southClean = stripR64Losers(southAdv, sL.loserNorms);
   const wL = resolveWinnersByFrequency(r64W, westAdv, freqHints);
@@ -361,13 +443,12 @@ export function parseBracketExtract(text, hints = null) {
   const mL = resolveWinnersByFrequency(r64M, mwAdv, freqHints);
   const mwClean = stripR64Losers(mwAdv, mL.loserNorms);
 
-  const e32 = toIds(e32n.names, nameToId);
+  const e32 = toIds(eL.names, nameToId);
   const s32 = toIds(sL.names, nameToId);
   const w32 = toIds(wL.names, nameToId);
   const m32 = toIds(mL.names, nameToId);
 
-  /** East (Duke) column: same export stacks winners; sequential strip drains the queue before the regional final unless we use frequency here too. */
-  const e16 = roundFromPrev(e32, e32n.rest, nameToId, { useFrequency: true, freqHints });
+  const e16 = roundFromPrev(e32, [...eastClean], nameToId, { useFrequency: true, freqHints });
   const s16 = roundFromPrev(s32, [...southClean], nameToId, { useFrequency: true, freqHints });
   const w16 = roundFromPrev(w32, [...westClean], nameToId, { useFrequency: true, freqHints });
   const m16 = roundFromPrev(m32, [...mwClean], nameToId, { useFrequency: true, freqHints });

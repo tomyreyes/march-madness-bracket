@@ -18,10 +18,10 @@
       "west_r64_7": "miami",
       "west_r64_8": "purdue",
       "east_r64_1": "duke",
-      "east_r64_2": "tcu",
+      "east_r64_2": "ohio-st",
       "east_r64_3": "st-johns",
       "east_r64_4": "kansas",
-      "east_r64_5": "louisville",
+      "east_r64_5": "sfla",
       "east_r64_6": "michst",
       "east_r64_7": "ucla",
       "east_r64_8": "uconn",
@@ -47,9 +47,9 @@
       "west_r32_2": "high-point",
       "west_r32_3": "gonzaga",
       "west_r32_4": "purdue",
-      "east_r32_1": "duke",
+      "east_r32_1": "ohio-st",
       "east_r32_2": "kansas",
-      "east_r32_3": "michst",
+      "east_r32_3": "sfla",
       "east_r32_4": "uconn",
       "south_r32_1": "florida",
       "south_r32_2": "nebraska",
@@ -63,7 +63,7 @@
     "s16": {
       "west_s16_1": "arizona",
       "west_s16_2": "gonzaga",
-      "east_s16_1": "duke",
+      "east_s16_1": "ohio-st",
       "east_s16_2": "uconn",
       "south_s16_1": "florida",
       "south_s16_2": "houston",
@@ -72,12 +72,12 @@
     },
     "e8": {
       "west_e8_1": "arizona",
-      "east_e8_1": "uconn",
+      "east_e8_1": "ohio-st",
       "south_e8_1": "florida",
       "midwest_e8_1": "michigan"
     },
     "f4": {
-      "f4_1": "uconn",
+      "f4_1": "ohio-st",
       "f4_2": "arizona"
     },
     "ncg": {

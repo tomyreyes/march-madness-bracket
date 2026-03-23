@@ -1,5 +1,14 @@
 {
-  "$comment": "Per-participant slug (from PDF basename) → parseBracketExtract hints when the export is ambiguous. Keys tieBreak use norm() token order: sort two team norms with localeCompare and join with |.",
+  "$comment": "Per-participant slug (from PDF basename). tieBreak: only when occurrence counts tie. alwaysPick: force winner (norm) for that matchup even if counts disagree — use after spot-check. Keys: sort both norms with localeCompare, join with | (or any order; import normalizes). On pdf:import, StrikeOut annotations are merged into alwaysPick first; entries here override auto strikeout.",
+  "brennan": {
+    "alwaysPick": {
+      "ohio st.|tcu": "ohio st.",
+      "louisville|sfla": "sfla",
+      "ucf|ucla": "ucf",
+      "maryca|texas a&m": "maryca",
+      "kentucky|santa clara": "santa clara"
+    }
+  },
   "levi": {
     "tieBreak": {
       "kansas|st. john's": "kansas"

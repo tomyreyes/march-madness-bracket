@@ -13,7 +13,11 @@ import {
   loadReferencePickPaths,
   validateParticipantPicks,
 } from "./lib/validate-participant-picks.mjs";
-import { parseBracketExtract } from "./parse-bracket-text.mjs";
+import { buildStrikeoutAlwaysPickFromPdf } from "./lib/pdf-strikeout-hints.mjs";
+import {
+  extractR64GamesForStrikeout,
+  parseBracketExtract,
+} from "./parse-bracket-text.mjs";
 
 function slugFromBasename(name) {
   return name
@@ -91,11 +95,33 @@ async function main() {
     const { text } = await pdfParse(buf);
     const normalized = text.replace(/\r\n/g, "\n").trim();
 
+    const baseHint = importHints[id] ?? null;
+    /** @type {typeof baseHint} */
+    let hint = baseHint;
+    try {
+      const r64 = extractR64GamesForStrikeout(normalized, baseHint);
+      const strikePick = await buildStrikeoutAlwaysPickFromPdf(buf, r64);
+      if (strikePick && Object.keys(strikePick).length > 0) {
+        hint = {
+          ...(baseHint ?? {}),
+          alwaysPick: {
+            ...strikePick,
+            ...(baseHint?.alwaysPick ?? {}),
+          },
+        };
+      }
+    } catch (e) {
+      console.error(
+        "WARN strikeout-scan",
+        id,
+        e instanceof Error ? e.message : e,
+      );
+    }
+
     let picks;
     /** @type {string[]} */
     let parseWarnings = [];
     try {
-      const hint = importHints[id] ?? null;
       const parsed = parseBracketExtract(normalized, hint);
       picks = parsed.picks;
       parseWarnings = parsed.warnings ?? [];

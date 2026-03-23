@@ -191,8 +191,8 @@ def main() -> None:
     (data / "teams.json").write_text(json.dumps({"teams": teams}, indent=2) + "\n", encoding="utf-8")
     meta = {
         "tournamentLabel": "Demo NCAA-style bracket (sample data)",
-        "participantIds": ["alice", "bob", "casey"],
-        "fallbackParticipantId": "alice",
+        "participantIds": ["demo-1", "demo-2", "demo-3"],
+        "fallbackParticipantId": "demo-1",
     }
     (data / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
 
@@ -200,9 +200,9 @@ def main() -> None:
     participants.mkdir(parents=True, exist_ok=True)
 
     for pid, bias, name in [
-        ("alice", "chalk", "Alice"),
-        ("bob", "zig", "Bob"),
-        ("casey", "zag", "Casey"),
+        ("demo-1", "chalk", "Demo 1"),
+        ("demo-2", "zig", "Demo 2"),
+        ("demo-3", "zag", "Demo 3"),
     ]:
         picks = pick_bracket(games, teams, bias)
         doc = {"id": pid, "displayName": name, "picks": picks}
