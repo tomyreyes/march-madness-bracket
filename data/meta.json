@@ -1,18 +1,31 @@
 {
   "tournamentLabel": "NCAA Bracket 2026",
   "participantIds": [
+    "aaron",
+    "aaron-2",
     "alex-1",
     "alex-2",
     "brennan",
+    "brett",
+    "casandra",
+    "casandra-2",
+    "derek",
     "eric",
     "haydn",
     "herman",
     "herman-2",
     "jeff",
     "jonny",
+    "jonny-2",
+    "keith",
+    "keith-2",
+    "laura",
+    "laura-2",
     "levi",
     "megan",
+    "michael",
     "miranda",
+    "miranda-2",
     "pau",
     "quinn",
     "rob",
@@ -21,7 +34,10 @@
     "shu",
     "tomy",
     "ty",
-    "zach"
+    "ty-2",
+    "ty-b",
+    "zach",
+    "zach-2"
   ],
   "fallbackParticipantId": "tomy"
 }

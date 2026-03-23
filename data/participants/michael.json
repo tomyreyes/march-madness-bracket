@@ -1,6 +1,6 @@
 {
-  "id": "miranda",
-  "displayName": "Miranda",
+  "id": "michael",
+  "displayName": "Michael",
   "picks": {
     "first_four": {
       "ff_1": "ff_1b",
@@ -11,7 +11,7 @@
     "r64": {
       "west_r64_1": "arizona",
       "west_r64_2": "utah-st",
-      "west_r64_3": "wisconsin",
+      "west_r64_3": "high-point",
       "west_r64_4": "arkansas",
       "west_r64_5": "texas",
       "west_r64_6": "gonzaga",
@@ -29,7 +29,7 @@
       "south_r64_2": "iowa",
       "south_r64_3": "vanderbilt",
       "south_r64_4": "nebraska",
-      "south_r64_5": "n-carolina",
+      "south_r64_5": "vcu",
       "south_r64_6": "illinois",
       "south_r64_7": "texas-am",
       "south_r64_8": "houston",
@@ -44,16 +44,16 @@
     },
     "r32": {
       "west_r32_1": "arizona",
-      "west_r32_2": "wisconsin",
-      "west_r32_3": "gonzaga",
+      "west_r32_2": "arkansas",
+      "west_r32_3": "texas",
       "west_r32_4": "purdue",
       "east_r32_1": "duke",
       "east_r32_2": "st-johns",
-      "east_r32_3": "louisville",
+      "east_r32_3": "michst",
       "east_r32_4": "uconn",
       "south_r32_1": "florida",
-      "south_r32_2": "nebraska",
-      "south_r32_3": "n-carolina",
+      "south_r32_2": "vanderbilt",
+      "south_r32_3": "illinois",
       "south_r32_4": "houston",
       "midwest_r32_1": "michigan",
       "midwest_r32_2": "alabama",
@@ -62,13 +62,13 @@
     },
     "s16": {
       "west_s16_1": "arizona",
-      "west_s16_2": "gonzaga",
+      "west_s16_2": "purdue",
       "east_s16_1": "duke",
-      "east_s16_2": "louisville",
+      "east_s16_2": "uconn",
       "south_s16_1": "florida",
       "south_s16_2": "houston",
       "midwest_s16_1": "michigan",
-      "midwest_s16_2": "tennessee"
+      "midwest_s16_2": "iowa-st"
     },
     "e8": {
       "west_e8_1": "arizona",
@@ -78,10 +78,10 @@
     },
     "f4": {
       "f4_1": "duke",
-      "f4_2": "michigan"
+      "f4_2": "arizona"
     },
     "ncg": {
-      "ncg": "michigan"
+      "ncg": "duke"
     }
   }
 }

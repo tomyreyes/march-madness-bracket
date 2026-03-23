@@ -1,6 +1,6 @@
 {
-  "id": "miranda",
-  "displayName": "Miranda",
+  "id": "laura-2",
+  "displayName": "Laura-2",
   "picks": {
     "first_four": {
       "ff_1": "ff_1b",
@@ -23,18 +23,18 @@
       "east_r64_4": "kansas",
       "east_r64_5": "louisville",
       "east_r64_6": "michst",
-      "east_r64_7": "ucla",
+      "east_r64_7": "ucf",
       "east_r64_8": "uconn",
       "south_r64_1": "florida",
       "south_r64_2": "iowa",
       "south_r64_3": "vanderbilt",
       "south_r64_4": "nebraska",
-      "south_r64_5": "n-carolina",
+      "south_r64_5": "vcu",
       "south_r64_6": "illinois",
-      "south_r64_7": "texas-am",
+      "south_r64_7": "saint-marys",
       "south_r64_8": "houston",
       "midwest_r64_1": "michigan",
-      "midwest_r64_2": "saint-louis",
+      "midwest_r64_2": "georgia",
       "midwest_r64_3": "texas-tech",
       "midwest_r64_4": "alabama",
       "midwest_r64_5": "tennessee",
@@ -45,43 +45,43 @@
     "r32": {
       "west_r32_1": "arizona",
       "west_r32_2": "wisconsin",
-      "west_r32_3": "gonzaga",
-      "west_r32_4": "purdue",
+      "west_r32_3": "texas",
+      "west_r32_4": "miami",
       "east_r32_1": "duke",
       "east_r32_2": "st-johns",
-      "east_r32_3": "louisville",
-      "east_r32_4": "uconn",
-      "south_r32_1": "florida",
-      "south_r32_2": "nebraska",
-      "south_r32_3": "n-carolina",
-      "south_r32_4": "houston",
-      "midwest_r32_1": "michigan",
-      "midwest_r32_2": "alabama",
-      "midwest_r32_3": "tennessee",
-      "midwest_r32_4": "iowa-st"
+      "east_r32_3": "michst",
+      "east_r32_4": "ucf",
+      "south_r32_1": "iowa",
+      "south_r32_2": "vanderbilt",
+      "south_r32_3": "vcu",
+      "south_r32_4": "saint-marys",
+      "midwest_r32_1": "georgia",
+      "midwest_r32_2": "texas-tech",
+      "midwest_r32_3": "virginia",
+      "midwest_r32_4": "kentucky"
     },
     "s16": {
       "west_s16_1": "arizona",
-      "west_s16_2": "gonzaga",
+      "west_s16_2": "miami",
       "east_s16_1": "duke",
-      "east_s16_2": "louisville",
-      "south_s16_1": "florida",
-      "south_s16_2": "houston",
-      "midwest_s16_1": "michigan",
-      "midwest_s16_2": "tennessee"
+      "east_s16_2": "michst",
+      "south_s16_1": "vanderbilt",
+      "south_s16_2": "vcu",
+      "midwest_s16_1": "georgia",
+      "midwest_s16_2": "virginia"
     },
     "e8": {
       "west_e8_1": "arizona",
       "east_e8_1": "duke",
-      "south_e8_1": "florida",
-      "midwest_e8_1": "michigan"
+      "south_e8_1": "vanderbilt",
+      "midwest_e8_1": "georgia"
     },
     "f4": {
       "f4_1": "duke",
-      "f4_2": "michigan"
+      "f4_2": "georgia"
     },
     "ncg": {
-      "ncg": "michigan"
+      "ncg": "miami"
     }
   }
 }
