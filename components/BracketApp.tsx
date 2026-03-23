@@ -14,6 +14,8 @@ export type BracketAppPayload = {
   games: GameNode[];
   meta: Meta;
   participants: Participant[];
+  actualBySlot: Record<string, string>;
+  tournamentSyncedAt: string | null;
 };
 
 function buildUrl(pathname: string, participant: string, diff: boolean): string {
@@ -23,7 +25,15 @@ function buildUrl(pathname: string, participant: string, diff: boolean): string 
   return `${pathname}?${p.toString()}`;
 }
 
-export function BracketApp({ teamsById, gamesBySlot, games, meta, participants }: BracketAppPayload) {
+export function BracketApp({
+  teamsById,
+  gamesBySlot,
+  games,
+  meta,
+  participants,
+  actualBySlot,
+  tournamentSyncedAt,
+}: BracketAppPayload) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -93,6 +103,8 @@ export function BracketApp({ teamsById, gamesBySlot, games, meta, participants }
     return <div className="p-6 text-sm text-zinc-300">No participants loaded.</div>;
   }
 
+  const officialCount = Object.keys(actualBySlot).length;
+
   return (
     <div className="mx-auto max-w-[120rem] space-y-6 px-4 py-8">
       <header className="space-y-2">
@@ -100,6 +112,13 @@ export function BracketApp({ teamsById, gamesBySlot, games, meta, participants }
         <p className="text-sm text-zinc-400">
           Pick a bracket, pin yourself for comparisons, and toggle Diff to see how picks line up with yours.
         </p>
+        {officialCount > 0 ? (
+          <p className="text-xs text-sky-200/90">
+            Official results loaded ({officialCount} games)
+            {tournamentSyncedAt ? ` — last sync ${tournamentSyncedAt}` : null}. Cards show whether your pick
+            matches the winner.
+          </p>
+        ) : null}
       </header>
 
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
@@ -152,6 +171,7 @@ export function BracketApp({ teamsById, gamesBySlot, games, meta, participants }
         teamsById={teamsById}
         gamesBySlot={gamesBySlot}
         diffEnabled={diffOn}
+        actualBySlot={actualBySlot}
       />
     </div>
   );

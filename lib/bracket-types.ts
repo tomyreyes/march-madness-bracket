@@ -44,6 +44,29 @@ export const metaSchema = z.object({
 
 export type Meta = z.infer<typeof metaSchema>;
 
+export const actualGameResultSchema = z.object({
+  contestId: z.string(),
+  winnerTeamId: z.string(),
+  winnerSeo: z.string().optional(),
+  updatedAt: z.string(),
+});
+
+export const tournamentResultsFileSchema = z
+  .object({
+    schemaVersion: z.number().optional(),
+    seasonYear: z.number().nullable().optional(),
+    apiBase: z.string().optional(),
+    lastSyncedAt: z.string().nullable().optional(),
+    actuals: z
+      .record(roundIdSchema, z.record(z.string(), actualGameResultSchema))
+      .default({}),
+    syncNotes: z.array(z.string()).optional(),
+  })
+  .passthrough();
+
+export type TournamentResultsFile = z.infer<typeof tournamentResultsFileSchema>;
+export type ActualGameResult = z.infer<typeof actualGameResultSchema>;
+
 export type Side =
   | { kind: "team"; teamId: string }
   | { kind: "winner"; slotId: string };

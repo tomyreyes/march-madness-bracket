@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "seasonYear": 2026,
+  "apiBase": "https://ncaa-api.henrygd.me",
+  "lastSyncedAt": "2026-03-23T00:59:17.437Z",
+  "actuals": {
+    "r64": {
+      "east_r64_1": {
+        "contestId": "6534596",
+        "winnerTeamId": "duke",
+        "winnerSeo": "duke",
+        "updatedAt": "2026-03-23T00:59:17.434Z"
+      },
+      "east_r64_2": {
+        "contestId": "6534597",
+        "winnerTeamId": "tcu",
+        "winnerSeo": "tcu",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "east_r64_3": {
+        "contestId": "6534598",
+        "winnerTeamId": "st-johns",
+        "winnerSeo": "st-johns-ny",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "east_r64_4": {
+        "contestId": "6534599",
+        "winnerTeamId": "kansas",
+        "winnerSeo": "kansas",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "east_r64_5": {
+        "contestId": "6534600",
+        "winnerTeamId": "louisville",
+        "winnerSeo": "louisville",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "east_r64_6": {
+        "contestId": "6534601",
+        "winnerTeamId": "michst",
+        "winnerSeo": "michigan-st",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "east_r64_7": {
+        "contestId": "6534602",
+        "winnerTeamId": "ucla",
+        "winnerSeo": "ucla",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "east_r64_8": {
+        "contestId": "6534603",
+        "winnerTeamId": "uconn",
+        "winnerSeo": "uconn",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "south_r64_1": {
+        "contestId": "6534604",
+        "winnerTeamId": "florida",
+        "winnerSeo": "florida",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "south_r64_2": {
+        "contestId": "6534605",
+        "winnerTeamId": "iowa",
+        "winnerSeo": "iowa",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "south_r64_3": {
+        "contestId": "6534606",
+        "winnerTeamId": "vanderbilt",
+        "winnerSeo": "vanderbilt",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "south_r64_4": {
+        "contestId": "6534607",
+        "winnerTeamId": "nebraska",
+        "winnerSeo": "nebraska",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "south_r64_5": {
+        "contestId": "6534608",
+        "winnerTeamId": "vcu",
+        "winnerSeo": "vcu",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "south_r64_6": {
+        "contestId": "6534609",
+        "winnerTeamId": "illinois",
+        "winnerSeo": "illinois",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "south_r64_7": {
+        "contestId": "6534610",
+        "winnerTeamId": "texas-am",
+        "winnerSeo": "texas-am",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "south_r64_8": {
+        "contestId": "6534611",
+        "winnerTeamId": "houston",
+        "winnerSeo": "houston",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "west_r64_1": {
+        "contestId": "6534612",
+        "winnerTeamId": "arizona",
+        "winnerSeo": "arizona",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "west_r64_2": {
+        "contestId": "6534613",
+        "winnerTeamId": "utah-st",
+        "winnerSeo": "utah-st",
+        "updatedAt": "2026-03-23T00:59:17.436Z"
+      },
+      "west_r64_3": {
+        "contestId": "6534614",
+        "winnerTeamId": "high-point",
+        "winnerSeo": "high-point",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "west_r64_4": {
+        "contestId": "6534615",
+        "winnerTeamId": "arkansas",
+        "winnerSeo": "arkansas",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "west_r64_5": {
+        "contestId": "6534616",
+        "winnerTeamId": "texas",
+        "winnerSeo": "texas",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "west_r64_6": {
+        "contestId": "6534617",
+        "winnerTeamId": "gonzaga",
+        "winnerSeo": "gonzaga",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "west_r64_7": {
+        "contestId": "6534618",
+        "winnerTeamId": "miami",
+        "winnerSeo": "miami-fl",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "west_r64_8": {
+        "contestId": "6534619",
+        "winnerTeamId": "purdue",
+        "winnerSeo": "purdue",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r64_1": {
+        "contestId": "6534620",
+        "winnerTeamId": "michigan",
+        "winnerSeo": "michigan",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r64_2": {
+        "contestId": "6534621",
+        "winnerTeamId": "saint-louis",
+        "winnerSeo": "saint-louis",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r64_3": {
+        "contestId": "6534622",
+        "winnerTeamId": "texas-tech",
+        "winnerSeo": "texas-tech",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r64_4": {
+        "contestId": "6534623",
+        "winnerTeamId": "alabama",
+        "winnerSeo": "alabama",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r64_5": {
+        "contestId": "6534624",
+        "winnerTeamId": "tennessee",
+        "winnerSeo": "tennessee",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r64_6": {
+        "contestId": "6534625",
+        "winnerTeamId": "virginia",
+        "winnerSeo": "virginia",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r64_7": {
+        "contestId": "6534626",
+        "winnerTeamId": "kentucky",
+        "winnerSeo": "kentucky",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r64_8": {
+        "contestId": "6534627",
+        "winnerTeamId": "iowa-st",
+        "winnerSeo": "iowa-st",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      }
+    },
+    "r32": {
+      "east_r32_1": {
+        "contestId": "6534628",
+        "winnerTeamId": "duke",
+        "winnerSeo": "duke",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "east_r32_2": {
+        "contestId": "6534629",
+        "winnerTeamId": "st-johns",
+        "winnerSeo": "st-johns-ny",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "east_r32_3": {
+        "contestId": "6534630",
+        "winnerTeamId": "michst",
+        "winnerSeo": "michigan-st",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "south_r32_2": {
+        "contestId": "6534633",
+        "winnerTeamId": "nebraska",
+        "winnerSeo": "nebraska",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "south_r32_3": {
+        "contestId": "6534634",
+        "winnerTeamId": "illinois",
+        "winnerSeo": "illinois",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "south_r32_4": {
+        "contestId": "6534635",
+        "winnerTeamId": "houston",
+        "winnerSeo": "houston",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "west_r32_2": {
+        "contestId": "6534637",
+        "winnerTeamId": "arkansas",
+        "winnerSeo": "arkansas",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "west_r32_3": {
+        "contestId": "6534638",
+        "winnerTeamId": "texas",
+        "winnerSeo": "texas",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "west_r32_4": {
+        "contestId": "6534639",
+        "winnerTeamId": "purdue",
+        "winnerSeo": "purdue",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r32_1": {
+        "contestId": "6534640",
+        "winnerTeamId": "michigan",
+        "winnerSeo": "michigan",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r32_3": {
+        "contestId": "6534642",
+        "winnerTeamId": "tennessee",
+        "winnerSeo": "tennessee",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      },
+      "midwest_r32_4": {
+        "contestId": "6534643",
+        "winnerTeamId": "iowa-st",
+        "winnerSeo": "iowa-st",
+        "updatedAt": "2026-03-23T00:59:17.437Z"
+      }
+    }
+  },
+  "syncNotes": [
+    "skip_bp_101_contest_6534592",
+    "skip_bp_102_contest_6534593",
+    "skip_bp_103_contest_6534594",
+    "skip_bp_104_contest_6534595"
+  ]
+}

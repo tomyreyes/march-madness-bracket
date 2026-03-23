@@ -10,6 +10,8 @@ export default function HomePage() {
     games: data.games,
     meta: data.meta,
     participants: data.participants,
+    actualBySlot: data.actualBySlot,
+    tournamentSyncedAt: data.tournamentResults?.lastSyncedAt ?? null,
   };
 
   return (

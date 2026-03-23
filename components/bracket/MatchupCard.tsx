@@ -2,6 +2,7 @@
 
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
+import { getCardResultState } from "@/lib/bracket-actuals";
 import type { GameNode, Participant, Team } from "@/lib/bracket-types";
 import { type DiffStats, computeDiffStats } from "@/lib/diff";
 import { resolveMatchupTeams, seedForTeam, teamLabel } from "@/lib/resolver";
@@ -14,6 +15,7 @@ type Props = {
   teamsById: Record<string, Team>;
   gamesBySlot: Record<string, GameNode>;
   diffEnabled: boolean;
+  actualBySlot: Record<string, string>;
 };
 
 function rowClass(active: boolean): string {
@@ -31,6 +33,7 @@ export function MatchupCard({
   teamsById,
   gamesBySlot,
   diffEnabled,
+  actualBySlot,
 }: Props) {
   const map = useMemo(() => new Map(Object.entries(teamsById)), [teamsById]);
   const slotMap = useMemo(
@@ -38,8 +41,38 @@ export function MatchupCard({
     [gamesBySlot],
   );
 
-  const { teamAId, teamBId } = resolveMatchupTeams(game, viewParticipant, slotMap);
+  const actualWinnerTeamId = actualBySlot[game.slotId] ?? null;
+
+  const { teamAId, teamBId } = useMemo(
+    () => resolveMatchupTeams(game, viewParticipant, slotMap),
+    [game, viewParticipant, slotMap],
+  );
+
+  const { pathBroken, direct } = useMemo(
+    () =>
+      getCardResultState({
+        game,
+        participant: viewParticipant,
+        gamesBySlot: slotMap,
+        actualBySlot,
+        teamAId,
+        teamBId,
+      }),
+    [game, viewParticipant, slotMap, actualBySlot, teamAId, teamBId],
+  );
+
+  const cardBorderClass = useMemo(() => {
+    const wrong = pathBroken || direct === "wrong";
+    const right = !pathBroken && direct === "correct";
+    if (wrong) return "border-2 border-red-500";
+    if (right) return "border-2 border-emerald-500";
+    return "border border-zinc-700";
+  }, [pathBroken, direct]);
   const predicted = viewParticipant.picks[game.round]?.[game.slotId];
+  const pickMatchesOfficial =
+    actualWinnerTeamId && predicted ? predicted === actualWinnerTeamId : null;
+
+  const showPathBrokenNote = pathBroken && direct !== "wrong";
 
   const diffStats: DiffStats | null =
     diffEnabled && pinnedParticipant
@@ -52,10 +85,20 @@ export function MatchupCard({
   const samePct = total > 0 ? Math.round((diffStats!.sameCount / total) * 100) : 0;
 
   return (
-    <div className="w-full min-w-[9.5rem] rounded-lg border border-zinc-700 bg-zinc-900/80 p-2 shadow-sm">
+    <div
+      className={[
+        "w-full min-w-[9.5rem] rounded-lg bg-zinc-900/80 p-2 shadow-sm",
+        cardBorderClass,
+      ].join(" ")}
+    >
       <div className="mb-1 text-[10px] font-medium uppercase tracking-wide text-zinc-500">
         {game.slotId}
       </div>
+      {showPathBrokenNote ? (
+        <p className="mb-1.5 text-[10px] font-medium text-amber-300/95">
+          Wrong pick earlier on one of these teams&apos; paths — not the other side of the region.
+        </p>
+      ) : null}
       <div className="flex flex-col gap-1">
         <div className={rowClass(predicted === teamAId)}>
           <span className="truncate">{teamLabel(map, teamAId)}</span>
@@ -70,6 +113,17 @@ export function MatchupCard({
           ) : null}
         </div>
       </div>
+
+      {actualWinnerTeamId ? (
+        <div className="mt-1.5 text-[10px] leading-snug text-zinc-400">
+          <span className="text-sky-300/90">Official:</span> {teamLabel(map, actualWinnerTeamId)}
+          {pickMatchesOfficial === true ? (
+            <span className="ml-1 text-emerald-400">✓ Your pick</span>
+          ) : pickMatchesOfficial === false ? (
+            <span className="ml-1 text-rose-300/90">≠ Your pick</span>
+          ) : null}
+        </div>
+      ) : null}
 
       {diffEnabled ? (
         <div className="mt-2 border-t border-zinc-800 pt-2">

@@ -12,6 +12,7 @@ type Props = {
   teamsById: Record<string, Team>;
   gamesBySlot: Record<string, GameNode>;
   diffEnabled: boolean;
+  actualBySlot: Record<string, string>;
 };
 
 function sortBySlotId(list: GameNode[]): GameNode[] {
@@ -26,6 +27,7 @@ export function Bracket({
   teamsById,
   gamesBySlot,
   diffEnabled,
+  actualBySlot,
 }: Props) {
   const firstFour = sortBySlotId(games.filter((g) => g.round === "first_four"));
   const f4 = sortBySlotId(games.filter((g) => g.round === "f4"));
@@ -48,6 +50,7 @@ export function Bracket({
               teamsById={teamsById}
               gamesBySlot={gamesBySlot}
               diffEnabled={diffEnabled}
+              actualBySlot={actualBySlot}
             />
           ))}
         </div>
@@ -84,6 +87,7 @@ export function Bracket({
                           teamsById={teamsById}
                           gamesBySlot={gamesBySlot}
                           diffEnabled={diffEnabled}
+                          actualBySlot={actualBySlot}
                         />
                       ))}
                     </div>
@@ -110,6 +114,7 @@ export function Bracket({
               teamsById={teamsById}
               gamesBySlot={gamesBySlot}
               diffEnabled={diffEnabled}
+              actualBySlot={actualBySlot}
             />
           ))}
           {ncg.map((g) => (
@@ -122,6 +127,7 @@ export function Bracket({
               teamsById={teamsById}
               gamesBySlot={gamesBySlot}
               diffEnabled={diffEnabled}
+              actualBySlot={actualBySlot}
             />
           ))}
         </div>

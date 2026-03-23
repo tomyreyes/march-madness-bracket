@@ -2,8 +2,9 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 
 import { buildBracketGames } from "./bracket-tree";
-import type { GameNode, Meta, Participant, Team } from "./bracket-types";
+import type { GameNode, Meta, Participant, Team, TournamentResultsFile } from "./bracket-types";
 import { metaSchema, participantSchema, teamsFileSchema } from "./bracket-types";
+import { loadTournamentResultsFile } from "./tournament-results";
 
 function readJsonFile<T>(absolutePath: string): T {
   const raw = fs.readFileSync(absolutePath, "utf8");
@@ -21,11 +22,16 @@ export type LoadedData = {
   participants: Participant[];
   games: GameNode[];
   gamesBySlot: Map<string, GameNode>;
+  tournamentResults: TournamentResultsFile | null;
+  /** slotId → official winner team id (when synced) */
+  actualBySlot: Record<string, string>;
 };
 
 export function loadBracketData(): LoadedData {
+  const cwd = process.cwd();
   const teamsParsed = teamsFileSchema.parse(readJsonFile(dataPath("teams.json")));
   const meta = metaSchema.parse(readJsonFile(dataPath("meta.json")));
+  const { doc: tournamentResults, actualBySlot } = loadTournamentResultsFile(cwd);
 
   const participants: Participant[] = meta.participantIds.map((id) => {
     const filePath = dataPath("participants", `${id}.json`);
@@ -46,5 +52,7 @@ export function loadBracketData(): LoadedData {
     participants,
     games,
     gamesBySlot,
+    tournamentResults,
+    actualBySlot,
   };
 }

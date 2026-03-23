@@ -32,3 +32,5 @@ npm run dev
 - `npm run pdf:validate` — validate participant JSON against `teams.json` and the Tomy template  
 
 **Strikeouts:** After games are played, some exports add real PDF StrikeOut annotations over the losing pick. `pdf-parse` text alone cannot see that; import uses `pdfjs-dist` to find those regions and treats “exactly one team in the matchup was struck in that column” as the winner being the other team. This only helps when the PDF actually contains StrikeOut data (not hand-drawn lines or flattened images).
+
+**Official results (NCAA API):** Run `npm run ncaa:sync` to pull finished games from [henrygd NCAA API](https://ncaa-api.henrygd.me) into `data/tournament-results.json`. The site highlights the real winner on each matchup and shows whether the viewed bracket matches. Optional env `NCAA_API_BASE` if you self-host the proxy. If the sync logs `UNRESOLVED_SEO`, add a line to `data/ncaa-seo-overrides.json` (`ncaa_seoname` → `teams.json` id). First Four (bracket positions 101–104) is not mapped automatically; add those rows by hand under `actuals.first_four` if you need them.

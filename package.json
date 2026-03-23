@@ -14,7 +14,8 @@
     "pdf:text": "tsx scripts/extract-pdf-text.ts",
     "pdf:strikes": "node scripts/pdf-strikeouts.mjs",
     "pdf:import": "node scripts/import-pdfs.mjs",
-    "pdf:validate": "node scripts/validate-picks.mjs"
+    "pdf:validate": "node scripts/validate-picks.mjs",
+    "ncaa:sync": "node scripts/sync-ncaa-results.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
