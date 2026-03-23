@@ -1,0 +1,86 @@
+# One GET to the brackets API per run (~5 req/s limit safe). Runs only on tournament
+# days (America/Los_Angeles) 9:00–21:59 local; commits only if data/tournament-results.json changes.
+name: Sync NCAA tournament results
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run even outside tournament calendar / PT hours (for testing)"
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: sync-ncaa-results
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tournament window (America/Los_Angeles)
+        id: window
+        run: |
+          RUN_SYNC=false
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force }}" = "true" ]; then
+            RUN_SYNC=true
+            echo "Force sync: bypassing calendar/hour gate."
+          else
+            export TZ=America/Los_Angeles
+            MD=$(date +%m%d)
+            HOUR=$(date +%H)
+            case "$MD" in
+              0321|0322|0326|0327|0328|0329|0404|0406) ok=1 ;;
+              *)
+                ok=0
+                echo "Not a tournament sync day (LA date=$MD), skipping."
+                ;;
+            esac
+            if [ "${ok:-0}" = 1 ]; then
+              if [ "$HOUR" -lt 9 ] || [ "$HOUR" -gt 21 ]; then
+                echo "Outside 9:00 AM–9:59 PM PT (hour=$HOUR), skipping."
+              else
+                echo "Within tournament sync window (LA date=$MD hour=$HOUR)."
+                RUN_SYNC=true
+              fi
+            fi
+          fi
+          echo "run_sync=$RUN_SYNC" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        if: steps.window.outputs.run_sync == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.window.outputs.run_sync == 'true'
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.window.outputs.run_sync == 'true'
+        run: npm ci
+
+      - name: Sync from NCAA API
+        if: steps.window.outputs.run_sync == 'true'
+        env:
+          TOURNAMENT_YEAR: "2026"
+        run: npm run ncaa:sync
+
+      - name: Commit and push if changed
+        if: steps.window.outputs.run_sync == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/tournament-results.json
+          if git diff --staged --quiet; then
+            echo "No changes to tournament-results.json."
+            exit 0
+          fi
+          git commit -m "chore(results): sync NCAA tournament results"
+          git push

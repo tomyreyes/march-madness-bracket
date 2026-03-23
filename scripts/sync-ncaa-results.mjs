@@ -7,6 +7,7 @@
  *
  * Env:
  *   NCAA_API_BASE — default https://ncaa-api.henrygd.me
+ *   TOURNAMENT_YEAR — season year for API path (if no --year flag)
  */
 import * as fs from "node:fs";
 import * as path from "node:path";
@@ -20,7 +21,11 @@ function parseArgs(argv) {
   const dry = argv.includes("--dry-run");
   let year = new Date().getUTCFullYear();
   const yi = argv.indexOf("--year");
-  if (yi >= 0 && argv[yi + 1]) year = Number(argv[yi + 1]);
+  if (yi >= 0 && argv[yi + 1]) {
+    year = Number(argv[yi + 1]);
+  } else if (process.env.TOURNAMENT_YEAR?.trim()) {
+    year = Number(process.env.TOURNAMENT_YEAR.trim());
+  }
   return { dry, year };
 }
 
@@ -76,11 +81,27 @@ function main() {
     const body = await fetchBrackets(base, year);
     const champs = body.championships;
     if (!Array.isArray(champs) || champs.length === 0) {
-      throw new Error("No championships in brackets response");
+      console.error(
+        JSON.stringify(
+          { warning: "No championships in brackets response; exiting without write", year },
+          null,
+          2,
+        ),
+      );
+      process.exit(0);
+      return;
     }
     const games = champs[0].games;
     if (!Array.isArray(games)) {
-      throw new Error("No games array in first championship");
+      console.error(
+        JSON.stringify(
+          { warning: "No games array in first championship; exiting without write", year },
+          null,
+          2,
+        ),
+      );
+      process.exit(0);
+      return;
     }
 
     const doc = loadOrCreateResults(outPath);
