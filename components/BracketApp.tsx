@@ -106,10 +106,10 @@ export function BracketApp({
   const officialCount = Object.keys(actualBySlot).length;
 
   return (
-    <div className="mx-auto max-w-[120rem] space-y-6 px-4 py-8">
+    <div className="mx-auto max-w-[120rem] space-y-6 px-4 pt-8 pb-[max(2rem,env(safe-area-inset-bottom))]">
       <header className="space-y-2">
-        <h1 className="text-2xl font-semibold tracking-tight text-white">{meta.tournamentLabel}</h1>
-        <p className="text-sm text-zinc-400">
+        <h1 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">{meta.tournamentLabel}</h1>
+        <p className="text-sm leading-relaxed text-zinc-400 md:leading-normal">
           Pick a bracket, pin yourself for comparisons, and toggle Diff to see how picks line up with yours.
         </p>
         {officialCount > 0 ? (
@@ -132,9 +132,9 @@ export function BracketApp({
             onUnpin={onUnpin}
           />
         </div>
-        <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-900/60 px-3 py-3">
-          <GitCompare className="h-5 w-5 text-zinc-400" />
-          <div className="flex flex-col">
+        <div className="flex min-h-[44px] items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-900/60 px-3 py-2 sm:py-3">
+          <GitCompare className="h-5 w-5 shrink-0 text-zinc-400" />
+          <div className="flex flex-col justify-center">
             <span className="text-xs font-medium uppercase tracking-wide text-zinc-400">Diff</span>
             <button
               type="button"
@@ -142,14 +142,14 @@ export function BracketApp({
               aria-checked={diffOn}
               onClick={() => toggleDiff(!diffOn)}
               className={[
-                "relative mt-1 h-7 w-12 rounded-full transition-colors",
+                "relative mt-1 h-11 w-[4.25rem] rounded-full transition-colors",
                 diffOn ? "bg-emerald-600" : "bg-zinc-700",
               ].join(" ")}
             >
               <span
                 className={[
-                  "absolute top-0.5 h-6 w-6 rounded-full bg-white transition-transform",
-                  diffOn ? "left-5" : "left-0.5",
+                  "absolute top-1 h-9 w-9 rounded-full bg-white shadow transition-transform",
+                  diffOn ? "left-[calc(100%-2.25rem-0.25rem)]" : "left-1",
                 ].join(" ")}
               />
             </button>

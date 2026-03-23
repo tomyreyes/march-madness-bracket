@@ -87,15 +87,15 @@ export function MatchupCard({
   return (
     <div
       className={[
-        "w-full min-w-[9.5rem] rounded-lg bg-zinc-900/80 p-2 shadow-sm",
+        "w-full min-w-0 rounded-lg bg-zinc-900/80 p-2 shadow-sm md:min-w-[9.5rem]",
         cardBorderClass,
       ].join(" ")}
     >
-      <div className="mb-1 text-[10px] font-medium uppercase tracking-wide text-zinc-500">
+      <div className="mb-1 text-[11px] font-medium uppercase tracking-wide text-zinc-500 md:text-[10px]">
         {game.slotId}
       </div>
       {showPathBrokenNote ? (
-        <p className="mb-1.5 text-[10px] font-medium text-amber-300/95">
+        <p className="mb-1.5 text-[11px] font-medium text-amber-300/95 md:text-[10px]">
           Wrong pick earlier on one of these teams&apos; paths — not the other side of the region.
         </p>
       ) : null}
@@ -115,7 +115,7 @@ export function MatchupCard({
       </div>
 
       {actualWinnerTeamId ? (
-        <div className="mt-1.5 text-[10px] leading-snug text-zinc-400">
+        <div className="mt-1.5 text-[11px] leading-snug text-zinc-400 md:text-[10px]">
           <span className="text-sky-300/90">Official:</span> {teamLabel(map, actualWinnerTeamId)}
           {pickMatchesOfficial === true ? (
             <span className="ml-1 text-emerald-400">✓ Your pick</span>

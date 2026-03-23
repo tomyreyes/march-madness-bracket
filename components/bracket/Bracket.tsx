@@ -56,13 +56,61 @@ export function Bracket({
         </div>
       </section>
 
-      <section className="overflow-x-auto">
+      <section>
         <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-zinc-400">
           Regionals
         </h2>
-        <div className="grid min-w-[56rem] grid-cols-4 gap-3">
+
+        {/* Mobile / narrow: stacked regions, wrap cards within each round */}
+        <div className="flex flex-col gap-8 md:hidden">
           {REGIONS.map((region) => (
-            <div key={region} className="flex flex-col gap-4">
+            <div
+              key={region}
+              className="border-b border-zinc-800 pb-6 last:border-b-0 last:pb-0"
+            >
+              <div className="mb-3 text-center text-sm font-semibold uppercase text-zinc-300">
+                {region}
+              </div>
+              <div className="flex flex-col gap-4">
+                {REGION_ROUNDS.map((round) => {
+                  const roundGames = sortBySlotId(
+                    games.filter((g) => g.region === region && g.round === round),
+                  );
+                  if (roundGames.length === 0) {
+                    return null;
+                  }
+                  return (
+                    <div key={`${region}-${round}-m`} className="flex flex-col gap-2">
+                      <div className="text-[11px] font-medium uppercase text-zinc-500">
+                        {round}
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {roundGames.map((g) => (
+                          <MatchupCard
+                            key={g.slotId}
+                            game={g}
+                            viewParticipant={viewParticipant}
+                            pinnedParticipant={pinnedParticipant}
+                            allParticipants={allParticipants}
+                            teamsById={teamsById}
+                            gamesBySlot={gamesBySlot}
+                            diffEnabled={diffEnabled}
+                            actualBySlot={actualBySlot}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* md+: four-column regional grid */}
+        <div className="hidden md:grid md:grid-cols-4 md:gap-3">
+          {REGIONS.map((region) => (
+            <div key={region} className="flex min-w-0 flex-col gap-4">
               <div className="text-center text-xs font-semibold uppercase text-zinc-300">
                 {region}
               </div>
@@ -74,7 +122,7 @@ export function Bracket({
                   return null;
                 }
                 return (
-                  <div key={`${region}-${round}`} className="flex flex-col gap-2">
+                  <div key={`${region}-${round}-d`} className="flex flex-col gap-2">
                     <div className="text-[10px] font-medium uppercase text-zinc-500">{round}</div>
                     <div className="flex flex-col gap-2">
                       {roundGames.map((g) => (

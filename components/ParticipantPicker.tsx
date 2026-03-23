@@ -41,19 +41,19 @@ export function ParticipantPicker({
           Bracket
         </label>
         <div className="relative">
-          <Search className="pointer-events-none absolute left-2 top-2.5 h-4 w-4 text-zinc-500" />
+          <Search className="pointer-events-none absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
           <input
             id="participant-search"
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search by name or id…"
-            className="w-full rounded-md border border-zinc-700 bg-zinc-950 py-2 pl-8 pr-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-emerald-600 focus:outline-none focus:ring-1 focus:ring-emerald-600"
+            className="w-full rounded-md border border-zinc-700 bg-zinc-950 py-2 pl-8 pr-2 text-base text-zinc-100 placeholder:text-zinc-600 focus:border-emerald-600 focus:outline-none focus:ring-1 focus:ring-emerald-600 md:text-sm"
           />
         </div>
         <select
           value={selectedId}
           onChange={(e) => onSelect(e.target.value)}
-          className="w-full rounded-md border border-zinc-700 bg-zinc-950 px-2 py-2 text-sm text-zinc-100 focus:border-emerald-600 focus:outline-none focus:ring-1 focus:ring-emerald-600"
+          className="w-full rounded-md border border-zinc-700 bg-zinc-950 px-2 py-2 text-base text-zinc-100 focus:border-emerald-600 focus:outline-none focus:ring-1 focus:ring-emerald-600 md:text-sm"
         >
           {filtered.map((p) => (
             <option key={p.id} value={p.id}>
@@ -69,7 +69,7 @@ export function ParticipantPicker({
         <button
           type="button"
           onClick={onPin}
-          className="inline-flex items-center gap-1 rounded-md bg-emerald-700 px-3 py-2 text-sm font-medium text-white hover:bg-emerald-600"
+          className="inline-flex min-h-[44px] items-center gap-1 rounded-md bg-emerald-700 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-600"
         >
           <Pin className="h-4 w-4" />
           Pin me
@@ -77,7 +77,7 @@ export function ParticipantPicker({
         <button
           type="button"
           onClick={onUnpin}
-          className="inline-flex items-center gap-1 rounded-md border border-zinc-600 px-3 py-2 text-sm font-medium text-zinc-200 hover:bg-zinc-800"
+          className="inline-flex min-h-[44px] items-center gap-1 rounded-md border border-zinc-600 px-4 py-2 text-sm font-medium text-zinc-200 hover:bg-zinc-800"
         >
           <PinOff className="h-4 w-4" />
           Unpin
