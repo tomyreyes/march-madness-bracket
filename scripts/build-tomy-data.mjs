@@ -209,7 +209,7 @@ fs.writeFileSync(
   path.join(root, "data", "meta.json"),
   JSON.stringify(
     {
-      tournamentLabel: "Bracket (from Tomy.pdf)",
+      tournamentLabel: "NCAA Bracket 2026",
       participantIds: ["tomy"],
       fallbackParticipantId: "tomy",
     },
