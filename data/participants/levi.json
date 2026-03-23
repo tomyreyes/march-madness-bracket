@@ -74,11 +74,11 @@
       "west_e8_1": "arkansas",
       "east_e8_1": "duke",
       "south_e8_1": "florida",
-      "midwest_e8_1": "michigan"
+      "midwest_e8_1": "iowa-st"
     },
     "f4": {
       "f4_1": "duke",
-      "f4_2": "michigan"
+      "f4_2": "iowa-st"
     },
     "ncg": {
       "ncg": "iowa-st"
