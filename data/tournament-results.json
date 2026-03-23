@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "seasonYear": 2026,
   "apiBase": "https://ncaa-api.henrygd.me",
-  "lastSyncedAt": "2026-03-23T01:41:37.609Z",
+  "lastSyncedAt": "2026-03-23T04:12:27.554Z",
   "actuals": {
     "r64": {
       "east_r64_1": {
@@ -276,6 +276,18 @@
         "winnerTeamId": "iowa",
         "winnerSeo": "iowa",
         "updatedAt": "2026-03-23T01:41:37.608Z"
+      },
+      "east_r32_4": {
+        "contestId": "6534631",
+        "winnerTeamId": "uconn",
+        "winnerSeo": "uconn",
+        "updatedAt": "2026-03-23T04:12:27.554Z"
+      },
+      "west_r32_1": {
+        "contestId": "6534636",
+        "winnerTeamId": "arizona",
+        "winnerSeo": "arizona",
+        "updatedAt": "2026-03-23T04:12:27.554Z"
       }
     }
   },
