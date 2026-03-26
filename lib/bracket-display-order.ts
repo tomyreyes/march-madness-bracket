@@ -26,14 +26,18 @@ const ROUND_SECTION_TITLES: Record<DisplayRoundId, string> = {
   ncg: "Championship",
 };
 
-const PHASE_SUFFIX: Record<RoundDisplayPhase, string> = {
-  live: " — live",
-  upcoming: " — upcoming",
-  complete: " — complete",
+export function roundSectionTitle(round: DisplayRoundId): string {
+  return ROUND_SECTION_TITLES[round];
+}
+
+const PHASE_BADGE_LABELS: Record<RoundDisplayPhase, string> = {
+  live: "Current round",
+  upcoming: "Upcoming",
+  complete: "Complete",
 };
 
-export function roundSectionHeading(round: DisplayRoundId, phase: RoundDisplayPhase): string {
-  return `${ROUND_SECTION_TITLES[round]}${PHASE_SUFFIX[phase]}`;
+export function phaseBadgeLabel(phase: RoundDisplayPhase): string {
+  return PHASE_BADGE_LABELS[phase];
 }
 
 function gamesInRound(games: GameNode[], round: DisplayRoundId): GameNode[] {

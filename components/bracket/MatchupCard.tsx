@@ -91,9 +91,6 @@ export function MatchupCard({
         cardBorderClass,
       ].join(" ")}
     >
-      <div className="mb-1 text-[11px] font-medium uppercase tracking-wide text-zinc-500 md:text-[10px]">
-        {game.slotId}
-      </div>
       {showPathBrokenNote ? (
         <p className="mb-1.5 text-[11px] font-medium text-amber-300/95 md:text-[10px]">
           Wrong pick earlier on one of these teams&apos; paths — not the other side of the region.
