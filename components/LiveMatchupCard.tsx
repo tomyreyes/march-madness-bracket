@@ -164,6 +164,14 @@ export function LiveMatchupCard({ live, game, viewParticipant, teamsById }: Prop
             <PicksColumn names={botNames} highlightName={viewParticipant.displayName} />
           </div>
         </div>
+        {(live.bystanderNames ?? []).length > 0 ? (
+          <div className="mt-3 border-t border-zinc-800/80 pt-2">
+            <div className="mb-1 text-[10px] font-medium uppercase tracking-wide text-zinc-500">
+              Bystanders:
+            </div>
+            <PicksColumn names={live.bystanderNames ?? []} highlightName={viewParticipant.displayName} />
+          </div>
+        ) : null}
       </div>
     </div>
   );

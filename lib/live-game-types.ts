@@ -10,6 +10,8 @@ export type LiveGameResponseItem = {
   awayScore: string;
   picksHomeNames: string[];
   picksAwayNames: string[];
+  /** Path broken vs results, or slot pick is not one of the two teams playing. */
+  bystanderNames: string[];
 };
 
 export type LiveGamesApiPayload = {

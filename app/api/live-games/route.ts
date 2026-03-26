@@ -87,7 +87,7 @@ export async function GET(req: Request) {
     const awayId = resolveSeo(row.away.seo);
     if (!homeId || !awayId) continue;
 
-    const { picksHomeNames, picksAwayNames } = splitParticipantPicksForLiveGame(
+    const { picksHomeNames, picksAwayNames, bystanderNames } = splitParticipantPicksForLiveGame(
       game,
       data.participants,
       gamesBySlot,
@@ -108,6 +108,7 @@ export async function GET(req: Request) {
       awayScore: row.away.score,
       picksHomeNames,
       picksAwayNames,
+      bystanderNames,
     });
   }
 

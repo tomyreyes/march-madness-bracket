@@ -23,6 +23,7 @@ export function buildMockLiveGamesPayload(): LiveGamesApiPayload {
         awayScore: "61",
         picksHomeNames: ["Tomy", "Brennan", "Eric", "Zach", "Levi", "Megan", "Derek", "Alex-1", "Keith"],
         picksAwayNames: ["Brett", "Jonny", "Jeff", "Casandra", "Shu", "Pau", "Michael", "Ty-2", "Sam"],
+        bystanderNames: ["Laura", "Jonny-2", "Haydn", "Aaron-2", "Rob", "Miranda"],
       },
       {
         contestId: "mock-east-s16-1",
@@ -36,6 +37,7 @@ export function buildMockLiveGamesPayload(): LiveGamesApiPayload {
         awayScore: "31",
         picksHomeNames: ["Tomy", "Eric", "Quinn", "Miranda", "Rob", "Herman", "Laura-2", "Aaron"],
         picksAwayNames: ["Haydn", "Ty-2"],
+        bystanderNames: ["Brett", "Casandra", "Shu", "Laura"],
       },
     ],
     dateKey: "mock",
