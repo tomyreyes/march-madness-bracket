@@ -48,7 +48,7 @@ export function MatchupCard({
     [game, viewParticipant, slotMap],
   );
 
-  const { pathBroken, direct } = useMemo(
+  const { pathBroken, pathBrokenEliminatedPickTeamId, direct } = useMemo(
     () =>
       getCardResultState({
         game,
@@ -93,7 +93,13 @@ export function MatchupCard({
     >
       {showPathBrokenNote ? (
         <p className="mb-1.5 text-[11px] font-medium text-amber-300/95 md:text-[10px]">
-          Wrong pick earlier on one of these teams&apos; paths — not the other side of the region.
+          {pathBrokenEliminatedPickTeamId ? (
+            <>
+              {teamLabel(map, pathBrokenEliminatedPickTeamId)} was eliminated in an earlier round.
+            </>
+          ) : (
+            <>This matchup doesn&apos;t line up with official results on your path to get here.</>
+          )}
         </p>
       ) : null}
       <div className="flex flex-col gap-1">

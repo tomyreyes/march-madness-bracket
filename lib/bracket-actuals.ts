@@ -68,6 +68,13 @@ export function collectRelevantActualCheckSlots(
 
 export type CardDirectResult = "correct" | "wrong" | null;
 
+export type CardResultState = {
+  pathBroken: boolean;
+  /** Team the participant picked to advance at the first contradicting feeder; they lost per official result. */
+  pathBrokenEliminatedPickTeamId: string | null;
+  direct: CardDirectResult;
+};
+
 export function getCardResultState({
   game,
   participant,
@@ -82,7 +89,7 @@ export function getCardResultState({
   actualBySlot: Record<string, string>;
   teamAId?: string;
   teamBId?: string;
-}): { pathBroken: boolean; direct: CardDirectResult } {
+}): CardResultState {
   const relevant = collectRelevantActualCheckSlots(
     game,
     teamAId,
@@ -92,6 +99,7 @@ export function getCardResultState({
   );
 
   let pathBroken = false;
+  let pathBrokenEliminatedPickTeamId: string | null = null;
   for (const feederId of Array.from(relevant)) {
     const actual = actualBySlot[feederId];
     if (!actual) continue;
@@ -100,6 +108,7 @@ export function getCardResultState({
     const pick = participant.picks[feederGame.round]?.[feederId];
     if (pick != null && pick !== actual) {
       pathBroken = true;
+      pathBrokenEliminatedPickTeamId = pick;
       break;
     }
   }
@@ -113,5 +122,5 @@ export function getCardResultState({
     }
   }
 
-  return { pathBroken, direct };
+  return { pathBroken, pathBrokenEliminatedPickTeamId, direct };
 }
