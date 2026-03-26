@@ -4,6 +4,7 @@ import { GitCompare } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Bracket } from "@/components/bracket/Bracket";
+import { LiveGamesSection } from "@/components/LiveGamesSection";
 import { ParticipantPicker } from "@/components/ParticipantPicker";
 import type { GameNode, Meta, Participant, Team } from "@/lib/bracket-types";
 import { PINNED_PARTICIPANT_STORAGE_KEY } from "@/lib/constants";
@@ -162,6 +163,12 @@ export function BracketApp({
           Diff needs a pinned profile. Choose your bracket above and tap <strong>Pin me</strong>.
         </p>
       ) : null}
+
+      <LiveGamesSection
+        viewParticipant={viewParticipant}
+        teamsById={teamsById}
+        gamesBySlot={gamesBySlot}
+      />
 
       <Bracket
         games={games}
