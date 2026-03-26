@@ -92,7 +92,6 @@ export function LiveGamesSection({
               game={game}
               viewParticipant={viewParticipant}
               teamsById={teamsById}
-              gamesBySlot={gamesBySlot}
             />
           );
         })}

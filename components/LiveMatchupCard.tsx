@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import type { GameNode, Participant, Team } from "@/lib/bracket-types";
 import type { LiveGameResponseItem } from "@/lib/live-game-types";
-import { resolveMatchupTeams, seedForTeam, teamLabel } from "@/lib/resolver";
+import { seedForTeam, teamLabel } from "@/lib/resolver";
 
 function teamNameClass(active: boolean, isOpponentPick: boolean): string {
   if (active) return "truncate font-medium text-emerald-50";
@@ -49,32 +49,19 @@ type Props = {
   game: GameNode;
   viewParticipant: Participant;
   teamsById: Record<string, Team>;
-  gamesBySlot: Record<string, GameNode>;
 };
 
-export function LiveMatchupCard({ live, game, viewParticipant, teamsById, gamesBySlot }: Props) {
+export function LiveMatchupCard({ live, game, viewParticipant, teamsById }: Props) {
   const map = useMemo(() => new Map(Object.entries(teamsById)), [teamsById]);
-  const slotMap = useMemo(
-    () => new Map(Object.entries(gamesBySlot).map(([k, v]) => [k, v as GameNode])),
-    [gamesBySlot],
-  );
 
-  const { teamAId, teamBId } = useMemo(
-    () => resolveMatchupTeams(game, viewParticipant, slotMap),
-    [game, viewParticipant, slotMap],
-  );
+  // Use API home/away; resolveMatchupTeams reflects picks and is wrong after upsets.
+  const topId = live.homeTeamId;
+  const botId = live.awayTeamId;
 
-  let topId = teamAId;
-  let botId = teamBId;
-  if (!topId || !botId) {
-    topId = live.homeTeamId;
-    botId = live.awayTeamId;
-  }
-
-  const topScore = topId === live.homeTeamId ? live.homeScore : live.awayScore;
-  const botScore = botId === live.homeTeamId ? live.homeScore : live.awayScore;
-  const topNames = topId === live.homeTeamId ? live.picksHomeNames : live.picksAwayNames;
-  const botNames = botId === live.homeTeamId ? live.picksHomeNames : live.picksAwayNames;
+  const topScore = live.homeScore;
+  const botScore = live.awayScore;
+  const topNames = live.picksHomeNames;
+  const botNames = live.picksAwayNames;
 
   const predicted = viewParticipant.picks[game.round]?.[game.slotId];
   const hasPick = Boolean(predicted && (predicted === topId || predicted === botId));
