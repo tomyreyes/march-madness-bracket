@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "seasonYear": 2026,
   "apiBase": "https://ncaa-api.henrygd.me",
-  "lastSyncedAt": "2026-03-23T04:12:27.554Z",
+  "lastSyncedAt": "2026-03-26T16:43:37.488Z",
   "actuals": {
     "r64": {
       "east_r64_1": {
@@ -288,6 +288,12 @@
         "winnerTeamId": "arizona",
         "winnerSeo": "arizona",
         "updatedAt": "2026-03-23T04:12:27.554Z"
+      },
+      "midwest_r32_2": {
+        "contestId": "6534641",
+        "winnerTeamId": "alabama",
+        "winnerSeo": "alabama",
+        "updatedAt": "2026-03-26T16:43:37.488Z"
       }
     }
   },
