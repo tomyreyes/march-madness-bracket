@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "seasonYear": 2026,
   "apiBase": "https://ncaa-api.henrygd.me",
-  "lastSyncedAt": "2026-03-27T16:32:47.108Z",
+  "lastSyncedAt": "2026-03-27T17:32:05.032Z",
   "actuals": {
     "r64": {
       "east_r64_1": {
