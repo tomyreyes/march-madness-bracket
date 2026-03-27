@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "seasonYear": 2026,
   "apiBase": "https://ncaa-api.henrygd.me",
-  "lastSyncedAt": "2026-03-27T01:11:19.609Z",
+  "lastSyncedAt": "2026-03-27T04:05:55.419Z",
   "actuals": {
     "r64": {
       "east_r64_1": {
@@ -294,6 +294,20 @@
         "winnerTeamId": "alabama",
         "winnerSeo": "alabama",
         "updatedAt": "2026-03-26T16:43:37.488Z"
+      }
+    },
+    "s16": {
+      "south_s16_1": {
+        "contestId": "6534646",
+        "winnerTeamId": "iowa",
+        "winnerSeo": "iowa",
+        "updatedAt": "2026-03-27T04:05:55.419Z"
+      },
+      "west_s16_2": {
+        "contestId": "6534649",
+        "winnerTeamId": "purdue",
+        "winnerSeo": "purdue",
+        "updatedAt": "2026-03-27T04:05:55.419Z"
       }
     }
   },
