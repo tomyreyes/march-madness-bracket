@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "seasonYear": 2026,
   "apiBase": "https://ncaa-api.henrygd.me",
-  "lastSyncedAt": "2026-03-28T01:05:30.260Z",
+  "lastSyncedAt": "2026-03-28T03:44:42.918Z",
   "actuals": {
     "r64": {
       "east_r64_1": {
@@ -320,6 +320,18 @@
         "winnerTeamId": "arizona",
         "winnerSeo": "arizona",
         "updatedAt": "2026-03-27T16:32:47.108Z"
+      },
+      "east_s16_1": {
+        "contestId": "6534644",
+        "winnerTeamId": "duke",
+        "winnerSeo": "duke",
+        "updatedAt": "2026-03-28T03:44:42.918Z"
+      },
+      "midwest_s16_1": {
+        "contestId": "6534650",
+        "winnerTeamId": "michigan",
+        "winnerSeo": "michigan",
+        "updatedAt": "2026-03-28T03:44:42.918Z"
       }
     }
   },
