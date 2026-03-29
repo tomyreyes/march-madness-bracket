@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "seasonYear": 2026,
   "apiBase": "https://ncaa-api.henrygd.me",
-  "lastSyncedAt": "2026-03-28T23:51:36.246Z",
+  "lastSyncedAt": "2026-03-29T01:14:26.684Z",
   "actuals": {
     "r64": {
       "east_r64_1": {
@@ -344,6 +344,14 @@
         "winnerTeamId": "tennessee",
         "winnerSeo": "tennessee",
         "updatedAt": "2026-03-28T16:20:15.334Z"
+      }
+    },
+    "e8": {
+      "south_e8_1": {
+        "contestId": "6534653",
+        "winnerTeamId": "illinois",
+        "winnerSeo": "illinois",
+        "updatedAt": "2026-03-29T01:14:26.684Z"
       }
     }
   },
