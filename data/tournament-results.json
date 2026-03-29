@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "seasonYear": 2026,
   "apiBase": "https://ncaa-api.henrygd.me",
-  "lastSyncedAt": "2026-03-29T01:14:26.684Z",
+  "lastSyncedAt": "2026-03-29T04:11:13.020Z",
   "actuals": {
     "r64": {
       "east_r64_1": {
@@ -352,6 +352,12 @@
         "winnerTeamId": "illinois",
         "winnerSeo": "illinois",
         "updatedAt": "2026-03-29T01:14:26.684Z"
+      },
+      "west_e8_1": {
+        "contestId": "6534654",
+        "winnerTeamId": "arizona",
+        "winnerSeo": "arizona",
+        "updatedAt": "2026-03-29T04:11:13.020Z"
       }
     }
   },
