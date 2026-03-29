@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "seasonYear": 2026,
   "apiBase": "https://ncaa-api.henrygd.me",
-  "lastSyncedAt": "2026-03-29T23:21:30.430Z",
+  "lastSyncedAt": "2026-03-29T23:53:40.521Z",
   "actuals": {
     "r64": {
       "east_r64_1": {
@@ -364,6 +364,12 @@
         "winnerTeamId": "michigan",
         "winnerSeo": "michigan",
         "updatedAt": "2026-03-29T20:49:17.583Z"
+      },
+      "east_e8_1": {
+        "contestId": "6534652",
+        "winnerTeamId": "uconn",
+        "winnerSeo": "uconn",
+        "updatedAt": "2026-03-29T23:53:40.521Z"
       }
     }
   },
